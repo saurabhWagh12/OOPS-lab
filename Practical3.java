@@ -1,15 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package practical3;
 import java.util.*;
-
-/**
- *
- * @author SRCOEM
- */
 public class Practical3 {
     
      static class Time{
@@ -38,7 +27,7 @@ public class Practical3 {
             long j = t.hour*60*60+t.min*60+t.sec;
             
             long finTime; 
-//                    Math.abs(i-j);
+
             if(i<j){
                 finTime = j-i;
                 
@@ -87,7 +76,7 @@ public class Practical3 {
         public Time noHoursWorked(){
             Time t = new Time(0,0,0);
             for(int i=0;i<this.attend.length;i++){
-                t = t.addition(this.attend[i].tout.substraction(this.attend[i].tin));
+                t = t.addition(this.attend[i].tin.substraction(this.attend[i].tout));
             }
             return t;
         }
@@ -96,7 +85,7 @@ public class Practical3 {
             Time t = new Time(0,0,0);
             for(int i=0;i<this.attend.length;i++){
                 if(this.attend[i].day == d && this.attend[i].month == m && this.attend[i].year == y ){
-                   t = this.attend[i].tout.substraction(this.attend[i].tin);
+                   t = this.attend[i].tin.substraction(this.attend[i].tout);
                    break;
                 }
             }
@@ -106,24 +95,21 @@ public class Practical3 {
         
     }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
         
         Attendence a[] = new Attendence[3];
-        Time in = new Time(10,10,0);
-        Time out = new Time(5,5,30);
+        Time in = new Time(10,30,0);
+        Time out = new Time(15,10,0);
         a[0] = new Attendence(in,out,19,4,23);
-        in = new Time(11,00,30);
-        out = new Time(5,30,40);
+        in = new Time(11,50,0);
+        out = new Time(17,0,0);
         a[1] = new Attendence(in,out,20,4,23);
-        in = new Time(13,10,0);
-        out = new Time(6,50,30);
+        in = new Time(12,10,0);
+        out = new Time(16,30,0);
         a[2] = new Attendence(in,out,21,4,23);
         
         Employee e1 = new Employee("Shreyansh","SDE",1234,23,2500000,a);
+        
         Time t = e1.noHoursWorked();
         System.out.println(t.hour+":"+t.min+":"+t.sec);
         
@@ -131,9 +117,6 @@ public class Practical3 {
         System.out.println(t.hour+":"+t.min+":"+t.sec);
         
         
-        
-        
-//        Employee e1 = new Employee();
 
     }
     
