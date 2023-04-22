@@ -1,5 +1,5 @@
 import java.util.*;
-public class Practical3 {
+public class Practical2 {
     
      static class Time{
         long hour,min,sec;
